@@ -9,7 +9,7 @@ pygame.init()
 # Set up the window
 window_size = (800, 600)
 screen = pygame.display.set_mode(window_size)
-pygame.display.set_caption("Click Game")
+pygame.display.set_caption("click gam")
 
 # Set up variables
 click_count = 0
@@ -17,7 +17,7 @@ font = pygame.font.Font(None, 36)
 clock = pygame.time.Clock()
 
 # Load the anime girl image
-anime_girl_image = pygame.image.load("anime_girl.png")
+anime_girl_image = pygame.image.load("./assets/anime_girl.png")
 anime_girl_rect = anime_girl_image.get_rect()
 
 # Set up the camera
@@ -25,20 +25,20 @@ camera_offset = pygame.math.Vector2(window_size) / 2
 camera_speed = 0.1
 
 # Load the spinning fish GIF
-fish_gif = pygame.image.load("fish.gif")
+fish_gif = pygame.image.load("./assets/fish.gif")
 fish_rect = fish_gif.get_rect()
 fish_rect.bottomright = (window_size[0] - 10, window_size[1] - 10)
 fish_angle = 0
 
 # Load the background music
-pygame.mixer.music.load("background_music.mp3")
+pygame.mixer.music.load("./assets/background_music.mp3")
 pygame.mixer.music.play(-1)  # Play the music on a loop
 
 # Load the error sounds
 error_sounds = [
-    pygame.mixer.Sound("error1.wav"),
-    pygame.mixer.Sound("error2.wav"),
-    pygame.mixer.Sound("error3.wav")
+    pygame.mixer.Sound("./assets/error1.wav"),
+    pygame.mixer.Sound("./assets/error2.wav"),
+    pygame.mixer.Sound("./assets/error3.wav")
 ]
 
 # Function to change the background color
@@ -82,7 +82,9 @@ while True:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             click_count += 1
             if click_count == 4:
-                webbrowser.open("https://www.reddit.com")
+                # webbrowser.open("https://www.reddit.com"
+                # add someting that happens on click here
+                print({click_count})
             else:
                 screen.fill(change_background_color())
                 anime_girl_rect.center = event.pos - camera_offset  # Set the image position to the click position
