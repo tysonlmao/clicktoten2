@@ -81,10 +81,10 @@ while True:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             click_count += 1
-            if click_count == 4:
-                # webbrowser.open("https://www.reddit.com"
                 # add someting that happens on click here
-                print({click_count})
+            if click_count == 69:
+                webbrowser.open("https://www.pornhub.com")
+                print("opening pornuhb.com")
             else:
                 screen.fill(change_background_color())
                 anime_girl_rect.center = event.pos - camera_offset  # Set the image position to the click position
