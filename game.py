@@ -83,8 +83,7 @@ while True:
             click_count += 1
                 # add someting that happens on click here
             if click_count == 69:
-                webbrowser.open("https://www.pornhub.com")
-                print("opening pornuhb.com")
+                webbrowser.open("https://www.google.com/search?q=69")
             if click_count == 420:
                 webbrowser.open("https://www.google.com/search?q=snoop+dog")
                 print("opening snoop dog")
