@@ -85,6 +85,9 @@ while True:
             if click_count == 69:
                 webbrowser.open("https://www.pornhub.com")
                 print("opening pornuhb.com")
+            if click_count == 420:
+                webbrowser.open("https://www.google.com/search?q=snoop+dog")
+                print("opening snoop dog")
             else:
                 screen.fill(change_background_color())
                 anime_girl_rect.center = event.pos - camera_offset  # Set the image position to the click position

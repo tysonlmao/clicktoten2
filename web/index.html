@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Click Game</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      canvas {
+        background-color: #ffffff;
+        border: 3px solid #000000;
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      .button-container button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5 text-center">Click Game</h1>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <canvas id="gameCanvas" width="800" height="600"></canvas>
+          <div class="d-flex justify-content-center mt-3 button-container">
+            <button id="toggleButton" class="btn btn-primary">
+              Toggle Music
+            </button>
+            <button id="toggleColorsButton" class="btn btn-secondary">
+              Toggle Flashing Colors
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio
+      id="backgroundMusic"
+      src="../assets/background_music.mp3"
+      loop
+    ></audio>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      // Get the canvas element
+      var canvas = document.getElementById("gameCanvas");
+      var context = canvas.getContext("2d");
+
+      // Set up variables
+      var clickCount = 0;
+      var flashingColorsEnabled = true;
+
+      // Add event listener for mouse clicks
+      canvas.addEventListener("click", function () {
+        clickCount++;
+
+        // Check if the click count reaches 420
+        if (clickCount === 420) {
+          window.location.href = "https://www.google.com/search?q=snoop+dog";
+        }
+      });
+
+      // Get the toggle buttons and background music element
+      var toggleButton = document.getElementById("toggleButton");
+      var toggleColorsButton = document.getElementById("toggleColorsButton");
+      var backgroundMusic = document.getElementById("backgroundMusic");
+
+      // Toggle background music on button click
+      toggleButton.addEventListener("click", function () {
+        if (backgroundMusic.paused) {
+          backgroundMusic.play();
+        } else {
+          backgroundMusic.pause();
+        }
+      });
+
+      // Toggle flashing colors on button click
+      toggleColorsButton.addEventListener("click", function () {
+        flashingColorsEnabled = !flashingColorsEnabled;
+      });
+
+      // Load the GIF
+      var gif = new Image();
+      gif.src = "../assets/fish.gif";
+
+      // Function to generate a random color
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      // Main game loop
+      function gameLoop() {
+        // Clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Flash random colors every 20ms if enabled
+        if (flashingColorsEnabled) {
+          var color = getRandomColor();
+          context.fillStyle = color;
+          context.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Display click count
+        context.font = "36px Arial";
+        context.fillStyle = "#000000";
+        context.fillText("Clicks: " + clickCount, 20, 50);
+
+        // Draw the GIF at the bottom right corner
+        context.drawImage(
+          gif,
+          canvas.width - gif.width,
+          canvas.height - gif.height
+        );
+
+        // Request next frame
+        requestAnimationFrame(gameLoop);
+      }
+
+      // Start the game loop
+      gameLoop();
+    </script>
+  </body>
+</html>
